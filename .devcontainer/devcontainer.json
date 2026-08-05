@@ -8,5 +8,12 @@
       "moby": false
     }
   },
+
+  "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind,consistency=cached",
+  "workspaceFolder": "${localWorkspaceFolder}",
+  "remoteEnv": {
+    "SUPABASE_SERVICES_HOSTNAME": "host.docker.internal"
+  },
+  "forwardPorts": [3000, 54321, 54322, 54323],
   "remoteUser": "node"
 }
