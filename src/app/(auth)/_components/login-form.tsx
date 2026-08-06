@@ -49,7 +49,7 @@ export function LoginForm() {
           <div className="flex justify-end">
 
             <Link
-              href="#"
+              href="/forgot-password"
               className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
             >
               パスワードをお忘れの方
