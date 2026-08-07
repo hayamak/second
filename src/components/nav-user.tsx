@@ -63,13 +63,13 @@ export function NavUser({
           >
             <DropdownMenuGroup>
               <DropdownMenuItem className="h-11 cursor-pointer">
-                <CircleUser />
+                <CircleUser className="size-5" />
                 プロフィール
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="h-11 cursor-pointer">
-              <LogOut />
+              <LogOut className="size-5" />
               ログアウト
             </DropdownMenuItem>
           </DropdownMenuContent>
