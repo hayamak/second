@@ -2,6 +2,7 @@
 
 "use client"
 
+import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
 import {
   SidebarGroup,
@@ -26,7 +27,7 @@ export function NavMain({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title} className="h-11 cursor-pointer">
+              <SidebarMenuButton render={<Link href={item.url} />} tooltip={item.title} className="h-11 cursor-pointer">
                 {item.icon && <item.icon className="size-5" />}
                 <span className="text-base font-medium">{item.title}</span>
               </SidebarMenuButton>
