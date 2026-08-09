@@ -1,6 +1,9 @@
 // src/app/(auth)/_components/login-form.tsx
 
+"use client"
+
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import {
   Field,
@@ -11,10 +14,11 @@ import {
 import { Input } from "@/components/ui/input"
 
 export function LoginForm() {
+  const router = useRouter()
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
       <div className="bg-card px-6 py-12 shadow-sm sm:rounded-lg sm:px-12">
-        <form action="#" method="POST" className="space-y-8">
+        <form action="/dashboard" method="POST" className="space-y-8">
           <FieldGroup className="gap-6">
             <Field>
               <FieldLabel htmlFor="email" className="font-semibold">
@@ -60,7 +64,7 @@ export function LoginForm() {
 
           <div className="flex flex-col gap-8">
             <FieldSeparator>または</FieldSeparator>
-            <Button variant={"outline"} type="button" className="h-10 w-full cursor-pointer gap-3 font-semibold"><GoogleIcon />Googleでログイン</Button>
+            <Button variant={"outline"} onClick={() => router.push("/dashboard")} type="button" className="h-10 w-full cursor-pointer gap-3 font-semibold"><GoogleIcon />Googleでログイン</Button>
           </div>
 
         </form>
