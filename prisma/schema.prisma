@@ -9,3 +9,22 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Organisation {
+  id              Int      @id @default(autoincrement())
+  publicId        String   @unique @default(uuid()) @map("public_id") @db.Uuid
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz
+  createdBy       String   @map("created_by") @db.Uuid
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz
+  updatedBy       String?  @map("updated_by") @db.Uuid
+
+  name            String
+  corporateNumber String   @unique @map("corporate_number")
+  postalCode      String   @map("postal_code")
+  prefecture      String
+  city            String
+  address         String
+  building        String?
+
+  @@map("organisations")
+}
