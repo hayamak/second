@@ -23,7 +23,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarFooter
+  SidebarFooter,
+  useSidebar,
 } from "@/components/ui/sidebar"
 
 const data = {
@@ -80,14 +81,17 @@ const data = {
 
   ],
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Hayama",
+    email: "hayama@sfinter.com",
+    // avatar: "/avatars/shadcn.jpg",
   },
 
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+
+  const { isMobile, setOpenMobile, } = useSidebar();
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -130,7 +134,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <SidebarMenu>
                     {item.items.map((item) => (
                       <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton render={<Link href={item.url} />} isActive={item.isActive} className="pl-8">
+                        <SidebarMenuButton render={<Link href={item.url} onClick={() => {
+                          if (isMobile) {
+                            setOpenMobile(false)
+                          }
+                        }} />} isActive={item.isActive} className="pl-8">
                           {item.title}
                         </SidebarMenuButton>
                       </SidebarMenuItem>
