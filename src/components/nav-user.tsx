@@ -28,7 +28,7 @@ export function NavUser({
   user: {
     name: string
     email: string
-    avatar: string
+    avatar?: string
   }
 }) {
   const { isMobile } = useSidebar()
@@ -44,8 +44,8 @@ export function NavUser({
             />
           }>
             <Avatar className="h-8 w-8 rounded-lg grayscale">
-              <AvatarImage src={user.avatar} alt={user.name} />
-              <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+              {/* <AvatarImage src={user.avatar} alt={user.name} /> */}
+              <AvatarFallback className="rounded-lg">{user.name.slice(0, 1).toUpperCase()}</AvatarFallback>
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">{user.name}</span>
