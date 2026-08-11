@@ -79,7 +79,6 @@ export function EmployeesTable() {
           </Button>
         </div>
       </div>
-
     </div>
 
   )
