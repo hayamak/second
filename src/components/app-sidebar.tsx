@@ -45,40 +45,21 @@ const data = {
       ],
     },
     {
-      title: "IT資産",
+      title: "資産",
       url: "#",
       icon: Laptop,
       items: [
         {
-          title: "一覧",
-          url: "#",
-        },
-        {
-          title: "Data Fetching",
-          url: "#",
+          title: "デバイス",
+          url: "/assets/devices",
           isActive: true,
         },
         {
-          title: "Rendering",
+          title: "ライセンス",
           url: "#",
         },
-        {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-
       ],
     },
-
-
   ],
   user: {
     name: "Hayama",
