@@ -47,7 +47,7 @@ export function EmployeesTable() {
               <TableCell>{employee.email}</TableCell>
               <TableCell className="text-center">{employee.assetCount}</TableCell>
               <TableCell>
-                <EmployeeActions />
+                <EmployeeActions employee={employee} />
               </TableCell>
             </TableRow>
           ))}

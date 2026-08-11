@@ -1,20 +1,54 @@
+// src/app/(app)/organisation/_components/employee-form.tsx
+
+import { useActionState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import {
   Field,
+  FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldSeparator,
   FieldSet,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { ActionResult } from "@/types/action"
 
-export function EmployeeForm({ onCancel }: { onCancel: () => void }) {
+type Employee = {
+  name: string
+  employeeNumber: string
+  email: string
+  assetCount: number
+}
+
+const initialState = {
+  success: false,
+  message: ""
+}
+
+type EmployeeAction = (
+  previousState: ActionResult,
+  formData: FormData
+) => Promise<ActionResult>
+
+export function EmployeeForm({ employee, action, onCancel }: { employee?: Employee, action: EmployeeAction, onCancel: () => void }) {
+
+  const [state, formAction, pending] = useActionState(
+    action,
+    initialState
+  )
+
+  useEffect(() => {
+    if (state.success) {
+      onCancel()
+    }
+  }, [state.success, onCancel])
 
   return (
     <div className="w-full px-4">
-      <form>
+      <form action={formAction}>
         <FieldGroup>
           <FieldSet>
+            <FieldDescription>従業員番号とメールアドレスは任意です。利用者の識別に利用できます。</FieldDescription>
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="name">
@@ -22,7 +56,9 @@ export function EmployeeForm({ onCancel }: { onCancel: () => void }) {
                 </FieldLabel>
                 <Input
                   id="name"
+                  name="name"
                   placeholder="羽山 和行"
+                  defaultValue={employee?.name}
                   required
                 />
               </Field>
@@ -32,7 +68,9 @@ export function EmployeeForm({ onCancel }: { onCancel: () => void }) {
                 </FieldLabel>
                 <Input
                   id="employee-number"
+                  name="employeeNumber"
                   placeholder="123456"
+                  defaultValue={employee?.employeeNumber}
                 />
               </Field>
               <Field>
@@ -41,6 +79,9 @@ export function EmployeeForm({ onCancel }: { onCancel: () => void }) {
                 </FieldLabel>
                 <Input
                   id="email"
+                  name="email"
+                  type="email"
+                  defaultValue={employee?.email}
                   placeholder="name@example.com"
                 />
               </Field>
@@ -49,7 +90,7 @@ export function EmployeeForm({ onCancel }: { onCancel: () => void }) {
           <FieldSeparator />
           <Field>
             <Button type="submit" className={"cursor-pointer"}>保存</Button>
-            <Button type="button" className={"cursor-pointer"} variant={"outline"} onClick={onCancel}>
+            <Button type="button" className={"cursor-pointer"} variant={"outline"} onClick={onCancel} disabled={pending}>
               キャンセル
             </Button>
           </Field>

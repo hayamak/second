@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sheet"
 
 import { EmployeeForm } from "./employee-form"
+import { createEmployee } from "@/actions/employee"
 
 export function AddEmployeeSheet() {
 
@@ -19,8 +20,6 @@ export function AddEmployeeSheet() {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-
-
       <SheetTrigger render={<Button variant="outline" className={"cursor-pointer"}>
         利用者を追加
       </Button>} />
@@ -31,7 +30,7 @@ export function AddEmployeeSheet() {
             IT資産を利用する従業員などを登録します。
           </SheetDescription>
         </SheetHeader>
-        <EmployeeForm onCancel={() => setOpen(false)} />
+        <EmployeeForm action={createEmployee} onCancel={() => setOpen(false)} />
       </SheetContent>
     </Sheet>
   )
