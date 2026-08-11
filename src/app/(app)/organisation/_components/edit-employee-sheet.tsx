@@ -9,20 +9,14 @@ import {
 
 import { EmployeeForm } from "./employee-form"
 import { updateEmployee } from "@/actions/employee"
-
-type Employee = {
-  name: string
-  employeeNumber: string
-  email: string
-  assetCount: number
-}
+import type { EmployeeFormValues } from "@/schemas/employee"
 
 export function EditEmployeeSheet({
   employee,
   open,
   onOpenChange,
 }: {
-  employee: Employee
+  employee: EmployeeFormValues
   open: boolean
   onOpenChange: (open: boolean) => void
 }) {

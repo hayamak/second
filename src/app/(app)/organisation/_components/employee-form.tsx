@@ -11,16 +11,10 @@ import {
   FieldSet,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { ActionResult } from "@/types/action"
+import type { ActionResult } from "@/types/action"
+import type { EmployeeFormValues } from "@/schemas/employee"
 
-type Employee = {
-  name: string
-  employeeNumber: string
-  email: string
-  assetCount: number
-}
-
-const initialState = {
+const initialState: ActionResult = {
   success: false,
   message: ""
 }
@@ -30,7 +24,7 @@ type EmployeeAction = (
   formData: FormData
 ) => Promise<ActionResult>
 
-export function EmployeeForm({ employee, action, onCancel }: { employee?: Employee, action: EmployeeAction, onCancel: () => void }) {
+export function EmployeeForm({ employee, action, onCancel }: { employee?: EmployeeFormValues, action: EmployeeAction, onCancel: () => void }) {
 
   const [state, formAction, pending] = useActionState(
     action,
