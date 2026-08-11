@@ -50,8 +50,8 @@ const data = {
       icon: Laptop,
       items: [
         {
-          title: "デバイス",
-          url: "/assets/devices",
+          title: "ハードウェア",
+          url: "/assets/hardware",
           isActive: true,
         },
         {

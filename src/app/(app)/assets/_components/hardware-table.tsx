@@ -18,7 +18,7 @@ import { assets } from "@/data/assets"
 
 const ITEMS_PER_PAGE = 20
 
-export function DevicesTable() {
+export function HardwareTable() {
 
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -47,7 +47,7 @@ export function DevicesTable() {
             <TableRow key={asset.id}>
               <TableCell>
                 <Link
-                  href={`/assets/${asset.id}`}
+                  href={`/assets/hardware/${asset.id}`}
                 >
                   {asset.serialNumber}
                 </Link>
@@ -58,7 +58,7 @@ export function DevicesTable() {
               <TableCell>{asset.status}</TableCell>
               <TableCell className="w-8">
                 <Link
-                  href={`/assets/${asset.id}`}
+                  href={`/assets/hardware/${asset.id}`}
                   className="flex size-8 items-center justify-center"
                 >
                   <ChevronRight className="size-4 text-muted-foreground" />
