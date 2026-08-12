@@ -1,6 +1,6 @@
 // src/app/(app)/assets/hardware/page.tsx
 
-import { HardwareTable } from "../_components/hardware-table"
+import { HardwareTable } from "./_components/hardware-table"
 
 export default function HardwarePage() {
   return (

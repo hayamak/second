@@ -1,4 +1,5 @@
-// src/app/(app)/assets/_components/devices-table.tsx
+// src/app/(app)/assets/hardware/_components/hardware-table.tsx
+
 "use client"
 
 import { useState } from "react"
@@ -34,9 +35,9 @@ export function HardwareTable() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>シリアル番号</TableHead>
+            <TableHead>資産管理番号</TableHead>
             <TableHead>メーカー</TableHead>
-            <TableHead>型番</TableHead>
+            <TableHead>製品名 / モデル</TableHead>
             <TableHead>利用者</TableHead>
             <TableHead>状態</TableHead>
             <TableHead className="w-8"><span className="sr-only">詳細</span></TableHead>
