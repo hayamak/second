@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { NavUser } from "./nav-user"
 
-import { ChevronRight, Building, Laptop, LayoutDashboard, Recycle } from "lucide-react"
+import { ChevronRight, LayoutDashboard, Recycle } from "lucide-react"
 import {
   Collapsible,
   CollapsibleContent,
@@ -28,45 +28,15 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
+import { navigation } from "@/config/navigation"
+
 const data = {
-  navMain: [
-    {
-      title: "組織",
-      url: "#",
-      icon: Building,
-      items: [
-        {
-          title: "組織情報",
-          url: "/organisation",
-        },
-        {
-          title: "利用者",
-          url: "/organisation/employees",
-        },
-      ],
-    },
-    {
-      title: "資産",
-      url: "#",
-      icon: Laptop,
-      items: [
-        {
-          title: "ハードウェア",
-          url: "/assets/hardware",
-        },
-        {
-          title: "ライセンス",
-          url: "#",
-        },
-      ],
-    },
-  ],
+  navigation,
   user: {
     name: "Hayama",
     email: "hayama@sfinter.com",
     // avatar: "/avatars/shadcn.jpg",
   },
-
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -77,7 +47,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     if (url === "/organisation") {
       return pathname === url
     }
-
     return pathname === url || pathname.startsWith(`${url}/`)
   }
 
@@ -109,7 +78,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroupContent>
         </SidebarGroup>
         {/* We create a collapsible SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
+        {data.navigation.map((item) => (
           <Collapsible
             key={item.title}
             title={item.title}
