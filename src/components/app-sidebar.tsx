@@ -4,10 +4,11 @@
 
 import * as React from "react"
 
+import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { NavUser } from "./nav-user"
 
-import { ChevronRight, Building, Laptop, } from "lucide-react"
+import { ChevronRight, Building, Laptop, LayoutDashboard, Recycle } from "lucide-react"
 import {
   Collapsible,
   CollapsibleContent,
@@ -52,7 +53,6 @@ const data = {
         {
           title: "ハードウェア",
           url: "/assets/hardware",
-          isActive: true,
         },
         {
           title: "ライセンス",
@@ -70,26 +70,44 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-
+  const pathname = usePathname()
   const { isMobile, setOpenMobile, } = useSidebar();
+
+  const isActive = (url: string) => {
+    if (url === "/organisation") {
+      return pathname === url
+    }
+
+    return pathname === url || pathname.startsWith(`${url}/`)
+  }
 
   return (
     <Sidebar collapsible="offcanvas" {...props}>
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              render={<Link href="dashboard" />}
-              className="data-[slot=sidebar-menu-button]:p-1.5!"
-            >
-              {/* <IconInnerShadowTop className="size-5!" /> */}
-              <span className="text-base font-semibold">asett</span>
-
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+      <SidebarHeader className="px-4 py-5">
+        <div className="flex items-center gap-3 py-2">
+          <div className="flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
+            <Recycle className="size-4" />
+          </div>
+          <span className="text-base font-semibold">アセット</span>
+        </div>
       </SidebarHeader>
       <SidebarContent className="gap-0">
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton render={<Link href={"/dashboard"} onClick={() => {
+                  if (isMobile) {
+                    setOpenMobile(false)
+                  }
+                }} />} isActive={pathname === "/dashboard"}>
+                  <LayoutDashboard />
+                  ダッシュボード
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         {/* We create a collapsible SidebarGroup for each parent. */}
         {data.navMain.map((item) => (
           <Collapsible
@@ -107,7 +125,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               >
                 <item.icon />
                 {item.title}
-
                 <ChevronRight className="ml-auto transition-transform group-data-panel-open/trigger:rotate-90" />
               </SidebarGroupLabel>
               <CollapsibleContent>
@@ -119,7 +136,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           if (isMobile) {
                             setOpenMobile(false)
                           }
-                        }} />} isActive={item.isActive} className="pl-8">
+                        }} />} isActive={isActive(item.url)} className="pl-8">
                           {item.title}
                         </SidebarMenuButton>
                       </SidebarMenuItem>
