@@ -42,7 +42,7 @@ export function EmployeeForm({ employee, action, onCancel }: { employee?: Employ
       <form action={formAction}>
         <FieldGroup>
           <FieldSet>
-            <FieldDescription>従業員番号とメールアドレスは任意です。利用者の識別に利用できます。</FieldDescription>
+            <FieldDescription>従業員番号とメールアドレスは任意です。利用者の識別に使用できます。</FieldDescription>
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="name">

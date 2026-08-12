@@ -39,7 +39,7 @@ const data = {
           url: "/organisation",
         },
         {
-          title: "メンバー",
+          title: "利用者",
           url: "/organisation/employees",
         },
       ],
