@@ -6,13 +6,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Menu, X } from "lucide-react"
-import { Button } from '../ui/button'
 
 const navigation = [
   { name: '機能', href: '#features' },
   { name: '料金', href: '#pricing' },
-  { name: '導入事例', href: '#cases' },
-  // { name: 'Company', href: '#' },
+  { name: '導入事例', href: '#case-studies' },
 ]
 
 export default function Header() {
@@ -48,9 +46,9 @@ export default function Header() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900 dark:text-white">
+            <Link key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900 dark:text-white">
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -89,13 +87,13 @@ export default function Header() {
             <div className="-my-6 divide-y divide-gray-500/10 dark:divide-white/10">
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
               <div className="py-6">

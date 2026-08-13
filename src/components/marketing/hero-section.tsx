@@ -4,10 +4,12 @@ import { ChevronRight } from 'lucide-react'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import { Badge } from '../ui/badge'
+import { buttonVariants } from '../ui/button'
+import { cn } from '@/lib/utils'
 
 export default function HeroSection() {
   return (
-    <div className="relative isolate overflow-hidden bg-white dark:bg-gray-900">
+    <div className="relative isolate overflow-hidden bg-background">
       <svg
         aria-hidden="true"
         className="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-gray-200 dark:stroke-white/10"
@@ -45,8 +47,7 @@ export default function HeroSection() {
             アセットは、組織のIT資産を管理するためのサービスです。必要な機能をシンプルなUIで提供し、無料で今すぐ使い始めることができます。
           </p>
           <div className="mt-10 flex items-center gap-x-6">
-            <Button className='px-3.5 py-5 font-semibold' render={<Link href={""} />}>無料ではじめる</Button>
-
+            <Link href={"/"} className={cn(buttonVariants(), "px-3.5 py-5 font-semibold")}>無料ではじめる</Link>
             <a href="#features" className="text-sm/6 font-semibold text-foreground hover:text-muted-foreground">
               機能を見る <span aria-hidden="true">→</span>
             </a>
