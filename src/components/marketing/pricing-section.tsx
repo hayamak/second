@@ -5,6 +5,7 @@ import { Check, Minus } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Fragment } from 'react'
 import { buttonVariants } from '../ui/button'
+import { Badge } from '../ui/badge'
 
 const tiers = [
   { name: '無料', id: 'tier-starter', href: '#', priceMonthly: '¥0', },
@@ -14,23 +15,22 @@ const tiers = [
 
 const sections = [
   {
-    name: 'Features',
+    name: '',
     features: [
-      { name: 'Edge content delivery', tiers: { 無料: true, 松: true, 竹: true } },
       { name: 'ログインアカウント数', tiers: { 無料: '1', 松: '3', 竹: '5' } },
       { name: '登録可能ハードウェア数', tiers: { 無料: '300', 松: '500', 竹: '1,000' } },
-      // { name: 'Single sign-on (SSO)', tiers: { 無料: false, 松: false, Scale: true } },
+      { name: 'CSV入出力', tiers: { 無料: true, 松: true, 竹: true } },
     ],
   },
-  {
-    name: 'Reporting',
-    features: [
-      { name: 'Advanced analytics', tiers: { 無料: true, 松: true, 竹: true } },
-      { name: 'Basic reports', tiers: { 無料: false, 松: true, 竹: true } },
-      // { name: 'Professional reports', tiers: { Starter: false, Growth: false, Scale: true } },
-      // { name: 'Custom report builder', tiers: { Starter: false, Growth: false, Scale: true } },
-    ],
-  },
+  // {
+  //   name: 'Reporting',
+  //   features: [
+  //     { name: 'Advanced analytics', tiers: { 無料: true, 松: true, 竹: true } },
+  //     { name: 'Basic reports', tiers: { 無料: false, 松: true, 竹: true } },
+  //     // { name: 'Professional reports', tiers: { Starter: false, Growth: false, Scale: true } },
+  //     // { name: 'Custom report builder', tiers: { Starter: false, Growth: false, Scale: true } },
+  //   ],
+  // },
   // {
   //   name: 'Support',
   //   features: [
@@ -44,7 +44,7 @@ const sections = [
 
 export default function PricingSection() {
   return (
-    <div className="bg-white py-24 sm:py-32 dark:bg-gray-900">
+    <div className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-base/7 font-semibold text-foreground">料金</h2>
@@ -64,9 +64,17 @@ export default function PricingSection() {
               key={tier.id}
               className='rounded-xl p-8 ring-1 ring-border'
             >
-              <h3 id={tier.id} className="text-sm/6 font-semibold text-gray-900 dark:text-white">
-                {tier.name}
-              </h3>
+              <div className='flex items-center gap-2'>
+                <h3 id={tier.id} className="text-sm/6 font-semibold text-foreground">
+                  {tier.name}
+                </h3>
+                {tier.name === '無料' && (
+                  <Badge className="font-semibold bg-emerald-100 text-emerald-700 hover:bg-emerald-100 dark:bg-emerald-950 dark:text-emerald-300">
+                    クレカ登録不要
+                  </Badge>
+                )}
+              </div>
+
               <p className="mt-2 flex items-baseline gap-x-1 text-gray-900 dark:text-white">
                 <span className="text-4xl font-semibold">{tier.priceMonthly}</span>
                 <span className="text-sm font-semibold text-muted-foreground"> / 月</span>
@@ -81,12 +89,12 @@ export default function PricingSection() {
                           <li key={feature.name} className="flex gap-x-3">
                             <Check
                               aria-hidden="true"
-                              className="h-6 w-5 flex-none text-indigo-600 dark:text-indigo-400"
+                              className="h-6 w-5 flex-none text-foreground"
                             />
                             <span>
                               {feature.name}{' '}
                               {typeof feature.tiers[tier.name] === 'string' ? (
-                                <span className="text-sm/6 text-gray-500 dark:text-gray-400">
+                                <span className="text-sm/6 text-muted-foreground">
                                   ({feature.tiers[tier.name]})
                                 </span>
                               ) : null}
@@ -106,7 +114,7 @@ export default function PricingSection() {
         <div className="isolate mt-20 hidden lg:block">
           <div className="relative -mx-8">
             <table className="w-full table-fixed border-separate border-spacing-x-8 text-left">
-              <caption className="sr-only">Pricing plan comparison</caption>
+              <caption className="sr-only">料金プランの選択</caption>
               <colgroup>
                 <col className="w-1/4" />
                 <col className="w-1/4" />
@@ -118,7 +126,14 @@ export default function PricingSection() {
                   <td />
                   {tiers.map((tier) => (
                     <th key={tier.id} scope="col" className="px-6 pt-6 xl:px-8 xl:pt-8">
-                      <div className="text-sm/7 font-semibold text-gray-900 dark:text-white">{tier.name}</div>
+                      <div className="flex items-center gap-2">
+                        <span className='text-sm/7 font-semibold text-foreground'>{tier.name}</span>
+                        {tier.name === '無料' && (
+                          <Badge className="font-semibold bg-emerald-100 text-emerald-700 hover:bg-emerald-100 dark:bg-emerald-950 dark:text-emerald-300">
+                            クレカ登録不要
+                          </Badge>
+                        )}
+                      </div>
                     </th>
                   ))}
                 </tr>
@@ -126,14 +141,15 @@ export default function PricingSection() {
               <tbody>
                 <tr>
                   <th scope="row">
-                    <span className="sr-only">Price</span>
+                    <span className="sr-only">料金</span>
                   </th>
                   {tiers.map((tier) => (
                     <td key={tier.id} className="px-6 pt-2 xl:px-8">
-                      <div className="flex items-baseline gap-x-1 text-gray-900 dark:text-white">
+                      <div className="flex items-baseline gap-x-1 text-foreground">
                         <span className="text-4xl font-semibold">{tier.priceMonthly}</span>
                         <span className="text-sm/6 font-semibold text-muted-foreground"> / 月</span>
                       </div>
+
                       <Link href={tier.href} className={cn(buttonVariants(), "mt-8 w-full text-sm/6 font-semibold py-5")}>プランを選ぶ</Link>
                     </td>
                   ))}
@@ -162,7 +178,7 @@ export default function PricingSection() {
                         {tiers.map((tier) => (
                           <td key={tier.id} className="px-6 py-4 xl:px-8">
                             {typeof feature.tiers[tier.name] === 'string' ? (
-                              <div className="text-center text-sm/6 text-gray-500 dark:text-gray-400">
+                              <div className="text-center text-sm/6 text-muted-foreground">
                                 {feature.tiers[tier.name]}
                               </div>
                             ) : (
@@ -170,12 +186,12 @@ export default function PricingSection() {
                                 {feature.tiers[tier.name] === true ? (
                                   <Check
                                     aria-hidden="true"
-                                    className="mx-auto size-5 text-indigo-600 dark:text-indigo-400"
+                                    className="mx-auto size-5 text-foreground"
                                   />
                                 ) : (
                                   <Minus
                                     aria-hidden="true"
-                                    className="mx-auto size-5 text-gray-400 dark:text-gray-500"
+                                    className="mx-auto size-5 text-muted-foreground/50"
                                   />
                                 )}
 

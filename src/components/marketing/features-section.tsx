@@ -1,3 +1,5 @@
+// src/components/marketing/features-section.tsx
+
 import { CloudUpload } from "lucide-react"
 
 const features = [
@@ -13,7 +15,7 @@ const features = [
 export default function FeaturesSection() {
   return (
     <section id="features">
-      <div className="overflow-hidden bg-background"> {/*py-24 sm:py-32*/}
+      <div className="overflow-hidden"> {/*py-24 sm:py-32*/}
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
             <div className="lg:pt-4 lg:pr-8">
