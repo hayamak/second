@@ -17,9 +17,10 @@ const sections = [
   {
     name: '',
     features: [
-      { name: 'ログインアカウント数', tiers: { 無料: '1', 松: '3', 竹: '5' } },
-      { name: '登録可能ハードウェア数', tiers: { 無料: '300', 松: '500', 竹: '1,000' } },
+      { name: 'ログインアカウント数', limit: true, tiers: { 無料: '1', 松: '1', 竹: '3' } },
+      { name: '登録可能ハードウェア数', limit: true, tiers: { 無料: '300', 松: '500', 竹: '1,000' } },
       { name: 'CSV入出力', tiers: { 無料: true, 松: true, 竹: true } },
+      { name: '初回データ設定サポート', tiers: { 無料: false, 松: true, 竹: true } },
     ],
   },
   // {
@@ -79,7 +80,7 @@ export default function PricingSection() {
                 <span className="text-4xl font-semibold">{tier.priceMonthly}</span>
                 <span className="text-sm font-semibold text-muted-foreground"> / 月</span>
               </p>
-              <Link href={tier.href} className={cn(buttonVariants(), "mt-8 w-full text-sm/6 font-semibold py-5")}>プランを選ぶ</Link>
+              <Link href={tier.href} className={cn(buttonVariants(), "mt-8 w-full text-sm/6 font-semibold py-5")}>{tier.name === '無料' ? '無料ではじめる' : 'プランを選ぶ'}</Link>
               <ul role="list" className="mt-10 space-y-4 text-sm/6 text-gray-900 dark:text-gray-200">
                 {sections.map((section) => (
                   <li key={section.name}>
@@ -96,11 +97,19 @@ export default function PricingSection() {
                               {typeof feature.tiers[tier.name] === 'string' ? (
                                 <span className="text-sm/6 text-muted-foreground">
                                   ({feature.tiers[tier.name]})
+                                  {feature.limit && (
+                                    <span className="ml-1 align-super text-xs text-muted-foreground">
+                                      上限
+                                    </span>
+                                  )}
+
                                 </span>
+
                               ) : null}
                             </span>
                           </li>
-                        ) : null,
+                        )
+                          : null,
                       )}
                     </ul>
                   </li>
@@ -150,7 +159,9 @@ export default function PricingSection() {
                         <span className="text-sm/6 font-semibold text-muted-foreground"> / 月</span>
                       </div>
 
-                      <Link href={tier.href} className={cn(buttonVariants(), "mt-8 w-full text-sm/6 font-semibold py-5")}>プランを選ぶ</Link>
+                      <Link href={tier.href} className={cn(buttonVariants(), "mt-8 w-full text-sm/6 font-semibold py-5")}>
+                        {tier.name === '無料' ? '無料ではじめる' : 'プランを選ぶ'}
+                      </Link>
                     </td>
                   ))}
                 </tr>
@@ -173,6 +184,11 @@ export default function PricingSection() {
                       <tr key={feature.name}>
                         <th scope="row" className="py-4 text-sm/6 font-normal text-gray-900 dark:text-gray-200">
                           {feature.name}
+                          {feature.limit && (
+                            <span className="ml-1 align-super text-xs text-muted-foreground">
+                              上限
+                            </span>
+                          )}
                           <div className="absolute inset-x-8 mt-4 h-px bg-gray-900/5 dark:bg-white/5" />
                         </th>
                         {tiers.map((tier) => (
@@ -208,6 +224,37 @@ export default function PricingSection() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-8 max-w-md lg:max-w-none lg:grid lg:grid-cols-4">
+          <div className="rounded-xl p-8 ring-1 ring-border lg:col-span-3 lg:col-start-2">
+            <div className="lg:flex lg:items-center lg:justify-between">
+              <div>
+                <div className="flex items-center gap-3">
+                  <h3 className="text-sm font-semibold text-foreground">
+                    エンタープライズ
+                  </h3>
+                  <Badge variant="outline">
+                    個別見積もり
+                  </Badge>
+                </div>
+
+                <p className="mt-4 text-sm/6 text-muted-foreground">
+                  1,000台を超えるIT資産の管理や、大規模な組織でのご利用をご希望の場合はお問い合わせください。
+                </p>
+              </div>
+
+              <Link
+                href="/contact"
+                className={cn(
+                  buttonVariants({ variant: "outline" }),
+                  "mt-6 w-full font-semibold lg:mt-0 lg:ml-8 lg:w-auto"
+                )}
+              >
+                お問い合わせ
+              </Link>
+            </div>
           </div>
         </div>
       </div>
