@@ -13,21 +13,27 @@ export default function HardwareDetailPage() {
           ハードウェア一覧
         </Link>
         <div>
-          {/* 製品名 / モデルと資産管理番号 */}
+          {/* 製品名（必須）と資産管理番号（任意） */}
           <h1 className="text-2xl font-semibold">MacBook Air 13インチ</h1>
           <p className="text-sm text-muted-foreground">HW-012345</p>
         </div>
       </div>
       <section className="space-y-4">
         <h2 className="text-lg font-semibold">基本情報</h2>
+        {/* メーカーと型番は必須。SNは任意 */}
         <dl className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-          <div className="space-y-1">
-            <dt className="text-sm text-muted-foreground">シリアル番号</dt>
-            <dd>SN1234SN321</dd>
-          </div>
           <div className="space-y-1">
             <dt className="text-sm text-muted-foreground">メーカー</dt>
             <dd>Apple</dd>
+          </div>
+          <div className="space-y-1">
+            <dt className="text-sm text-muted-foreground">型番</dt>
+            <dd>JID0393003</dd>
+          </div>
+
+          <div className="space-y-1">
+            <dt className="text-sm text-muted-foreground">シリアル番号</dt>
+            <dd>SN1234SN321</dd>
           </div>
         </dl>
       </section>
