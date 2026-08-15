@@ -8,9 +8,9 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Menu, X } from "lucide-react"
 
 const navigation = [
-  { name: '機能', href: '#features' },
-  { name: '料金', href: '#pricing' },
-  { name: '導入事例', href: '#case-studies' },
+  { name: '機能', href: '/#features' },
+  { name: '料金', href: '/#pricing' },
+  { name: '導入事例', href: '/#case-studies' },
 ]
 
 export default function Header() {
@@ -20,7 +20,7 @@ export default function Header() {
     <header className="bg-background">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
               alt=""
@@ -32,7 +32,7 @@ export default function Header() {
               src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
               className="h-8 w-auto not-dark:hidden"
             />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button

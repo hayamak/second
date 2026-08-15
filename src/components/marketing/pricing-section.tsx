@@ -45,11 +45,11 @@ const sections = [
 
 export default function PricingSection() {
   return (
-    <div className="py-24 sm:py-32">
+    <section id='pricing' className='py-24 sm:py-32'>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base/7 font-semibold text-foreground">料金</h2>
-          <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-6xl dark:text-white">
+          <h2 className="text-base/7 font-semibold text-muted-foreground">料金</h2>
+          <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-foreground sm:text-6xl">
             アセットの料金プラン
           </p>
         </div>
@@ -258,6 +258,8 @@ export default function PricingSection() {
           </div>
         </div>
       </div>
-    </div>
+
+    </section>
+
   )
 }
