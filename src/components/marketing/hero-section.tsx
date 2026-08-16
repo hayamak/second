@@ -28,7 +28,7 @@ export default function HeroSection() {
             アセットは、組織のIT資産を管理するためのサービスです。必要な機能をシンプルなUIで提供し、無料で今すぐ使い始めることができます。
           </p>
           <div className="mt-10 flex items-center gap-x-6">
-            <Link href={"/"} className={cn(buttonVariants(), "px-3.5 py-5 font-semibold")}>無料ではじめる</Link>
+            <Link href={"/signup"} className={cn(buttonVariants(), "px-3.5 py-5 font-semibold")}>無料ではじめる</Link>
             <a href="#features" className="text-sm/6 font-semibold text-foreground hover:text-muted-foreground">
               機能を見る <span aria-hidden="true">→</span>
             </a>

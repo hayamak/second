@@ -8,9 +8,9 @@ import { buttonVariants } from '../ui/button'
 import { Badge } from '../ui/badge'
 
 const tiers = [
-  { name: '無料', id: 'tier-starter', href: '#', priceMonthly: '¥0', },
-  { name: '松', id: 'tier-growth', href: '#', priceMonthly: '¥3,000', },
-  { name: '竹', id: 'tier-scale', href: '#', priceMonthly: '¥5,000', },
+  { name: '無料', id: 'tier-starter', href: '/signup', priceMonthly: '¥0', },
+  { name: '松', id: 'tier-growth', href: '/signup', priceMonthly: '¥3,000', },
+  { name: '竹', id: 'tier-scale', href: '/signup', priceMonthly: '¥5,000', },
 ] as const
 
 const sections = [
