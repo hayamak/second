@@ -63,7 +63,8 @@ export default function ContactForm() {
             htmlFor="privacy"
             className="font-normal text-muted-foreground"
           >
-            ご提供いただく個人情報について、<Link href={"/privacy"} className="text-foreground">プライバシーポリシー</Link>に同意する
+            <span>ご提供いただく個人情報について、<Link href={"/privacy"} className="text-foreground">プライバシーポリシー</Link>に同意する</span>
+
           </FieldLabel>
         </Field>
         <Field>
