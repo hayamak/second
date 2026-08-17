@@ -64,9 +64,8 @@ export function LoginForm() {
 
           <div className="flex flex-col gap-8">
             <FieldSeparator>または</FieldSeparator>
-            <Button variant={"outline"} onClick={() => router.push("/dashboard")} type="button" className="h-10 w-full cursor-pointer gap-3 font-semibold"><GoogleIcon />Googleでログイン</Button>
+            <Button variant={"outline"} onClick={() => router.push("/corporation/new")} type="button" className="h-10 w-full cursor-pointer gap-3 font-semibold"><GoogleIcon />Googleでログイン</Button>
           </div>
-
         </form>
       </div>
     </div>

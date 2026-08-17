@@ -6,12 +6,12 @@ export const navigation = [
     icon: Building,
     items: [
       {
-        title: "組織情報",
-        url: "/organisation",
+        title: "法人情報",
+        url: "/corporation",
       },
       {
         title: "利用者",
-        url: "/organisation/employees",
+        url: "/corporation/employees",
       },
     ],
   },
