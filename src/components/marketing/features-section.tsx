@@ -1,13 +1,19 @@
 // src/components/marketing/features-section.tsx
 
-import { CloudUpload } from "lucide-react"
+import { CloudUpload, SquareArrowRightExit } from "lucide-react"
 
 const features = [
   {
-    name: 'Push to deploy.',
+    name: 'CSV入出力',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      '管理するIT機器は1台ずつ、大量の場合はCSVファイルからインポートできます。有料プランのお客様の場合は初回のデータ登録は無料でサポートいたします。また、アセットで管理しているデータは必要に応じてエクスポートできます。',
     icon: CloudUpload,
+  },
+  {
+    name: '貸出・返却管理',
+    description:
+      '管理するIT機器は1台ずつ、大量の場合はCSVファイルからインポートできます。有料プランのお客様の場合は初回のデータ登録は無料でサポートいたします。また、アセットで管理しているデータは必要に応じてエクスポートできます。',
+    icon: SquareArrowRightExit,
   },
 
 ]
@@ -25,8 +31,8 @@ export default function FeaturesSection() {
                   必要な機能を
                 </p>
                 <p className="mt-6 text-lg/8 text-gray-700 dark:text-gray-300">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
-                  iste dolor cupiditate blanditiis ratione.
+                  アセットは組織のIT資産管理に必要な機能をシンプルで分かりやすく使いやすいUIで提供します。
+                  PC、プリンター、ネットワーク機器、スマートフォンなどの管理に最適です。購入資産・リースを問わず管理が可能です。
                 </p>
                 <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none dark:text-gray-400">
                   {features.map((feature) => (
@@ -34,7 +40,7 @@ export default function FeaturesSection() {
                       <dt className="inline font-semibold text-gray-900 dark:text-white">
                         <feature.icon
                           aria-hidden="true"
-                          className="absolute top-1 left-1 size-5 text-indigo-600 dark:text-indigo-400"
+                          className="absolute top-1 left-1 size-5 text-foreground"
                         />
                         {feature.name}
                       </dt>{' '}
