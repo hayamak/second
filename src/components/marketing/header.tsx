@@ -6,6 +6,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Menu, X } from "lucide-react"
+import { Logo } from "@/components/logo"
 
 const navigation = [
   { name: '機能', href: '/#features' },
@@ -21,8 +22,10 @@ export default function Header() {
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img
+            <span className="sr-only">asett.io</span>
+            <Logo className='size-8' />
+
+            {/* <img
               alt=""
               src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
               className="h-8 w-auto dark:hidden"
@@ -31,7 +34,7 @@ export default function Header() {
               alt=""
               src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
               className="h-8 w-auto not-dark:hidden"
-            />
+            /> */}
           </Link>
         </div>
         <div className="flex lg:hidden">

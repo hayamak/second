@@ -50,7 +50,7 @@ export default function PricingSection() {
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-base/7 font-semibold text-muted-foreground">料金</h2>
           <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-foreground sm:text-6xl">
-            アセットの料金プラン
+            料金プラン
           </p>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-600 sm:text-xl/8 dark:text-gray-400">

@@ -7,8 +7,9 @@ import * as React from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { NavUser } from "./nav-user"
+import { Logo } from "@/components/logo"
 
-import { ChevronRight, LayoutDashboard, Recycle } from "lucide-react"
+import { ChevronRight, LayoutDashboard, } from "lucide-react"
 import {
   Collapsible,
   CollapsibleContent,
@@ -54,10 +55,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader className="px-4 py-5">
         <div className="flex items-center gap-3 py-2">
-          <div className="flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <Recycle className="size-4" />
-          </div>
-          <span className="text-base font-semibold">アセット</span>
+          <Logo className="size-8" />
         </div>
       </SidebarHeader>
       <SidebarContent className="gap-0">
