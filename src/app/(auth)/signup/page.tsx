@@ -1,17 +1,15 @@
 // src/auth/(auth)/signup/page.tsx
 
-import { GalleryVerticalEnd } from "lucide-react"
+import { Logo } from "@/components/logo"
 import { SignupForm } from "../_components/signup-form"
 
 export default function SignupPage() {
   return (
     <div className="flex min-h-svh flex-col justify-center bg-muted py-12 sm:px-6 lg:px-8">
-      <div className="flex w-full flex-col gap-6">
-        <div className="flex items-center gap-2 self-center font-medium">
-          <div className="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <GalleryVerticalEnd className="size-4" />
-          </div>
-          アセット
+      <div className="flex w-full flex-col">
+        <div className="flex items-center justify-center gap-x-2">
+          <Logo className="size-8" />
+          <span className="font-semibold text-lg">アセット</span>
         </div>
         <SignupForm />
       </div>
