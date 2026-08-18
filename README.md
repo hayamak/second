@@ -1,3 +1,27 @@
+# asett.io
+
+## 法則
+
+### ゴールの法則 / Gall's Law
+
+> 正常に動作する複雑なシステムは、例外なく正常に動作する単純なシステムから発展したものである。
+> ゼロから作り出された複雑なシステムが正常に動作することはなく、またそれを修正して動作させるようにもできない。正常に動作する単純なシステムから構築を始めなければならない。
+> _John Gall_
+
+## 開発の原則 / Principles
+
+このプロジェクトでは以下の原則を重視します。
+
+### KISS原則 / Keep It Simple, Stupid
+
+- コードは常に単純に保ち、過度な複雑さを避ける。
+- 1つの関数・コンポーネントの役割は1つにする（目安: 50行以内）。
+
+### YAGNI原則 / You Ain't Gonna Neet It
+
+- 今必要のない機能は作らない。予測に基づいた実装は避ける。
+- 後で使うかも」という理由で作らない、残さない。
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
