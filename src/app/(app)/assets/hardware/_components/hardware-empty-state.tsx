@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Empty, EmptyHeader, EmptyTitle, EmptyDescription, EmptyContent, EmptyMedia } from "@/components/ui/empty"
 import { PackageOpen } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
+import { AddHardwareSheet } from "./add-hardware-sheet"
 
 export function HardwareEmptyState() {
   return (
@@ -17,7 +18,8 @@ export function HardwareEmptyState() {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex items-center gap-4">
-          <Link href={"/assets/hardware/new"} className={buttonVariants({ variant: "default" })}>ハードウェアを登録</Link>
+          <AddHardwareSheet />
+          {/* <Link href={"/assets/hardware/new"} className={buttonVariants({ variant: "default" })}>ハードウェアを登録</Link> */}
           <Link href={"/assets/hardware/import"} className={buttonVariants({ variant: "secondary" })}>CSVからインポート</Link>
         </div>
       </EmptyContent>

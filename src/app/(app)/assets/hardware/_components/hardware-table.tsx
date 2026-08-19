@@ -37,7 +37,7 @@ export function HardwareTable() {
           <TableRow>
             <TableHead>資産管理番号</TableHead>
             <TableHead>メーカー</TableHead>
-            <TableHead>製品名 / モデル</TableHead>
+            <TableHead>製品名</TableHead>
             <TableHead>利用者</TableHead>
             <TableHead>状態</TableHead>
             <TableHead className="w-8"><span className="sr-only">詳細</span></TableHead>
