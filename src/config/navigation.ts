@@ -1,3 +1,5 @@
+// src/config/navigation.ts
+
 import { Building, Laptop } from "lucide-react";
 
 export const navigation = [

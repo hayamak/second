@@ -1,4 +1,8 @@
+// src/components/nav-user.tsx
+
 "use client"
+
+import Link from "next/link"
 
 import { CircleUser, LogOut, EllipsisVertical } from "lucide-react"
 
@@ -63,8 +67,10 @@ export function NavUser({
           >
             <DropdownMenuGroup>
               <DropdownMenuItem className="h-11 cursor-pointer">
-                <CircleUser className="size-5" />
-                プロフィール
+                <Link href="/settings/profile" className="flex items-center gap-2">
+                  <CircleUser className="size-5" />
+                  プロフィール
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
