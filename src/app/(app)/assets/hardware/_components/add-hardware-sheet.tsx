@@ -2,26 +2,20 @@
 
 "use client"
 
-import { useState } from "react"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button"
 import { HardwareForm } from "./hardware-form"
 
-export function AddHardwareSheet() {
-  const [open, setOpen] = useState(false)
-
+export function AddHardwareSheet(
+  { open, onOpenChange }:
+    { open: boolean, onOpenChange: (open: boolean) => void }) {
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger render={<Button />} className={"cursor-pointer"}>
-        ハードウェアを追加
-      </SheetTrigger>
+    <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent>
         <SheetHeader>
           <SheetTitle>ハードウェアを追加</SheetTitle>
@@ -29,7 +23,7 @@ export function AddHardwareSheet() {
             PCなどハードウェアを登録します。
           </SheetDescription>
         </SheetHeader>
-        <HardwareForm onCancel={() => setOpen(false)} />
+        <HardwareForm onCancel={() => onOpenChange(false)} />
       </SheetContent>
     </Sheet>
   )

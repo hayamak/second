@@ -18,19 +18,22 @@ export function HardwareForm({ onCancel }: { onCancel: () => void }) {
         <FieldGroup>
           <Field>
             <FieldLabel htmlFor="manufacturer">メーカー</FieldLabel>
-            <Input id="manufacturer" name="manufacturer" placeholder="アップル" />
+            <Input id="manufacturer" name="manufacturer" placeholder="アップル" required />
           </Field>
           <Field>
             <FieldLabel htmlFor="name">製品名</FieldLabel>
-            <Input id="name" name="name" placeholder="Macbook Air 13インチ" />
+            <Input id="name" name="name" placeholder="Macbook Air 13インチ" required />
           </Field><Field>
-            <FieldLabel htmlFor="model">型番</FieldLabel>
+            <FieldLabel htmlFor="model">型番
+              <span className="text-muted-foreground font-normal">（任意）</span></FieldLabel>
             <Input id="model" name="model" placeholder="JID0393003" />
           </Field><Field>
-            <FieldLabel htmlFor="serial-number">シリアル番号</FieldLabel>
+            <FieldLabel htmlFor="serial-number">シリアル番号
+              <span className="text-muted-foreground font-normal">（任意）</span></FieldLabel>
             <Input id="serial-number" name="serialNumber" placeholder="SN12345N12345" />
           </Field><Field>
-            <FieldLabel htmlFor="asset-tag">資産管理番号</FieldLabel>
+            <FieldLabel htmlFor="asset-tag">資産管理番号
+              <span className="text-muted-foreground font-normal">（任意）</span></FieldLabel>
             <Input id="asset-tag" name="assetTag" placeholder="HW-123456" />
           </Field>
           <FieldSeparator />
