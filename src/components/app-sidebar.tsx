@@ -49,7 +49,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const prefixMatchRoutes = [
       "/assets/hardware",
       // 将来 /corporation/employees/[id] を作るならここに追加
-      // "/corporation/employees",
+      "/corporation/employees",
     ]
 
     if (prefixMatchRoutes.includes(url)) {
