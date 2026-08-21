@@ -35,7 +35,7 @@ export function NavUser({
     avatar?: string
   }
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile, setOpenMobile } = useSidebar()
 
   return (
     <SidebarMenu>
@@ -66,7 +66,14 @@ export function NavUser({
             sideOffset={4}
           >
             <DropdownMenuGroup>
-              <DropdownMenuItem render={<Link href="/settings/profile" className="h-10 flex items-center gap-2 cursor-pointer" />}>
+              <DropdownMenuItem render={<Link
+                href="/settings/profile"
+                className="h-10 flex items-center gap-2 cursor-pointer"
+                onClick={() => {
+                  if (isMobile) {
+                    setOpenMobile(false)
+                  }
+                }} />}>
                 <CircleUser className="size-5" />
                 プロフィール
               </DropdownMenuItem>
