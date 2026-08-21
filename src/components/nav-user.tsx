@@ -66,15 +66,13 @@ export function NavUser({
             sideOffset={4}
           >
             <DropdownMenuGroup>
-              <DropdownMenuItem className="h-11 cursor-pointer">
-                <Link href="/settings/profile" className="flex items-center gap-2">
-                  <CircleUser className="size-5" />
-                  プロフィール
-                </Link>
+              <DropdownMenuItem render={<Link href="/settings/profile" className="h-10 flex items-center gap-2 cursor-pointer" />}>
+                <CircleUser className="size-5" />
+                プロフィール
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="h-11 cursor-pointer">
+            <DropdownMenuItem className="h-10 cursor-pointer">
               <LogOut className="size-5" />
               ログアウト
             </DropdownMenuItem>
