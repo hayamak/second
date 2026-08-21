@@ -1,4 +1,8 @@
+// src/components/nav-user.tsx
+
 "use client"
+
+import Link from "next/link"
 
 import { CircleUser, LogOut, EllipsisVertical } from "lucide-react"
 
@@ -31,7 +35,7 @@ export function NavUser({
     avatar?: string
   }
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile, setOpenMobile } = useSidebar()
 
   return (
     <SidebarMenu>
@@ -62,13 +66,20 @@ export function NavUser({
             sideOffset={4}
           >
             <DropdownMenuGroup>
-              <DropdownMenuItem className="h-11 cursor-pointer">
+              <DropdownMenuItem render={<Link
+                href="/settings/profile"
+                className="h-10 flex items-center gap-2 cursor-pointer"
+                onClick={() => {
+                  if (isMobile) {
+                    setOpenMobile(false)
+                  }
+                }} />}>
                 <CircleUser className="size-5" />
                 プロフィール
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="h-11 cursor-pointer">
+            <DropdownMenuItem className="h-10 cursor-pointer">
               <LogOut className="size-5" />
               ログアウト
             </DropdownMenuItem>
