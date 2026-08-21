@@ -25,10 +25,6 @@ export const navigation = [
         title: "ハードウェア",
         url: "/assets/hardware",
       },
-      // {
-      //   title: "ライセンス",
-      //   url: "#",
-      // },
     ],
   },
 ];

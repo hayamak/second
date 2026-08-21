@@ -2,37 +2,31 @@
 
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet"
 
 import { EmployeeForm } from "./employee-form"
 import { createEmployee } from "@/actions/employee"
 
-export function AddEmployeeSheet() {
-
-  const [open, setOpen] = useState(false)
+export function AddEmployeeSheet(
+  { open, onOpenChange }:
+    { open: boolean, onOpenChange: (open: boolean) => void }) {
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger render={<Button variant="outline" className={"cursor-pointer"}>
-        利用者を追加
-      </Button>} />
+    <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>利用者を追加</SheetTitle>
+          <SheetTitle>従業員を追加</SheetTitle>
           <SheetDescription>
             IT資産を利用する従業員などを登録します。
           </SheetDescription>
         </SheetHeader>
-        <EmployeeForm action={createEmployee} onCancel={() => setOpen(false)} />
+        <EmployeeForm action={createEmployee} onCancel={() => onOpenChange(false)} />
       </SheetContent>
     </Sheet>
   )
