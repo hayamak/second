@@ -12,7 +12,7 @@ export const navigation = [
         url: "/corporation",
       },
       {
-        title: "利用者",
+        title: "従業員",
         url: "/corporation/employees",
       },
     ],
