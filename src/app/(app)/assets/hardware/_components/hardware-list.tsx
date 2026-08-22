@@ -5,16 +5,24 @@ import { useState } from "react"
 import { assets } from "@/data/assets"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { ChevronRight } from "lucide-react"
-
-enum AssetOwnership {
-  Owned = "owned",    // 自社所有
-  Leased = "leased",  // リース／レンタル
-  Other = "other",    // その他
-}
 
 const ITEMS_PER_PAGE = 20
 
+type AssetOwnership = "owned" | "leased" | "other"
+
+const ownershipVariant = {
+  owned: "secondary",
+  leased: "outline",
+  other: "ghost",
+} as const satisfies Record<AssetOwnership, "secondary" | "outline" | "ghost">
+
+const ownershipLabel = {
+  owned: "自社所有",
+  leased: "リース",
+  other: "その他",
+} as const satisfies Record<AssetOwnership, string>
 
 export function HardwareList() {
 
@@ -59,24 +67,14 @@ export function HardwareList() {
                 </h2>
               </div>
               <div className="mt-3 flex items-center gap-x-2.5 text-xs/5 text-gray-500 dark:text-gray-400">
+                <Badge variant={ownershipVariant[asset.ownership]}>
+                  {ownershipLabel[asset.ownership]}
+                </Badge>
+
                 <p className="truncate">{asset.serialNumber}</p>
-                <svg viewBox="0 0 2 2" className="size-0.5 flex-none fill-gray-500 dark:fill-gray-300">
-                  <circle r={1} cx={1} cy={1} />
-                </svg>
-                {/* <p className="whitespace-nowrap">{asset.statusText}</p> */}
               </div>
             </div>
-            <p className="text-sm text-muted-foreground">{asset.user}</p>
-            {/* {asset.environment === 'Preview' ? (
-            <div className="flex-none rounded-full bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 inset-ring inset-ring-gray-500/10 dark:bg-gray-400/10 dark:text-gray-400 dark:inset-ring-gray-400/20">
-              {deployment.environment}
-            </div>
-          ) : null}
-          {deployment.environment === 'Production' ? (
-            <div className="flex-none rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 inset-ring inset-ring-indigo-700/10 dark:bg-indigo-400/10 dark:text-indigo-400 dark:inset-ring-indigo-400/30">
-              {deployment.environment}
-            </div>
-          ) : null} */}
+            <p className="text-sm text-muted-foreground hidden sm:block">{asset.user}</p>
             <ChevronRight aria-hidden="true" className="size-5 flex-none text-gray-400" />
           </li>
         ))}
