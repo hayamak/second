@@ -45,10 +45,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { isMobile, setOpenMobile, } = useSidebar();
 
   const isActive = (url: string) => {
-    if (url === "/organisation") {
-      return pathname === url
+    // 詳細ページを持つルートだけ prefix マッチさせる
+    const prefixMatchRoutes = [
+      "/assets/hardware",
+      // 将来 /corporation/employees/[id] を作るならここに追加
+      "/corporation/employees",
+    ]
+
+    if (prefixMatchRoutes.includes(url)) {
+      return pathname === url || pathname.startsWith(`${url}/`)
     }
-    return pathname === url || pathname.startsWith(`${url}/`)
+
+    // それ以外は完全一致のみ
+    return pathname === url
   }
 
   return (

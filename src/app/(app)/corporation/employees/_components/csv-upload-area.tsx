@@ -1,4 +1,4 @@
-// src/app/(app)/assets/hardware/_components/csv-upload-area.tsx
+// src/app/(app)/corporation/employees/_components/csv-upload-area.tsx
 
 import { Upload } from "lucide-react";
 

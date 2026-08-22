@@ -14,6 +14,7 @@ import { HardwareForm } from "./hardware-form"
 export function AddHardwareSheet(
   { open, onOpenChange }:
     { open: boolean, onOpenChange: (open: boolean) => void }) {
+
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent>
