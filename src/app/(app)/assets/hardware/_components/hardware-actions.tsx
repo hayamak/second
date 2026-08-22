@@ -5,8 +5,9 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuGroup, DropdownMenuContent, DropdownMenuLabel, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import { AddHardwareSheet } from "./add-hardware-sheet"
+import { MoreHorizontal } from "lucide-react"
 
 export function HardwareActions() {
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -15,17 +16,24 @@ export function HardwareActions() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger render={<Button variant="outline" className="cursor-pointer" />}>
-          ハードウェアを追加
+          <MoreHorizontal className="size-4" />
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => setSheetOpen(true)} className="cursor-pointer">
-            1件ずつ登録
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href={"/assets/hardware/import"} className="w-full">
+        <DropdownMenuContent align="end" className="w-48">
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>追加</DropdownMenuLabel>
+            <DropdownMenuItem onClick={() => setSheetOpen(true)} className="cursor-pointer py-2">
+              1件ずつ登録
+            </DropdownMenuItem>
+            <DropdownMenuItem render={<Link href={"/assets/hardware/import"} />} className="cursor-pointer py-2">
               CSVからインポート
-            </Link>
-          </DropdownMenuItem>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem onClick={() => { }} className="cursor-pointer py-2">
+              一覧をエクスポート
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
       <AddHardwareSheet open={sheetOpen} onOpenChange={setSheetOpen} />
