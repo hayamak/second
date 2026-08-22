@@ -1,8 +1,8 @@
 // src/app/(app)/assets/hardware/page.tsx
 
-import { HardwareTable } from "./_components/hardware-table"
 import { HardwareEmptyState } from "./_components/hardware-empty-state"
 import { HardwareActions } from "./_components/hardware-actions"
+import { HardwareList } from "./_components/hardware-list"
 
 export default function HardwarePage() {
   return (
@@ -11,7 +11,7 @@ export default function HardwarePage() {
         <h1 className="text-2xl font-semibold">ハードウェア</h1>
         <HardwareActions />
       </div>
-      <HardwareTable />
+      <HardwareList />
       <HardwareEmptyState />
     </div>
   )
